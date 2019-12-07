@@ -75,3 +75,13 @@ window.addEventListener('scroll', function(e) {
 window.oncontextmenu = (e) => {
     e.preventDefault();
 }
+
+// preventDefault
+const navItems = document.querySelectorAll('.nav-link');
+navItems.forEach(navItem => {
+    navItem.addEventListener('click', e => {
+    e.preventDefault();
+    alert("HA HA Your Stuck Here!");
+    console.log('clicked')
+})
+})
