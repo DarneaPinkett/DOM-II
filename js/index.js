@@ -7,21 +7,21 @@ body.addEventListener('keypress', (e) => {
 })
 
 
-// Mouseenter&mouseleave
+// Mouseover
 const header = document.querySelector('.main-navigation');
-header.addEventListener('mouseenter', (event) => {
+header.addEventListener('mouseover', (event) => {
     event.stopPropagation();
     event.target.style.fontWeight = 'bold'
     event.target.style.color = 'red'
-    });
-header.addEventListener('mouseleave', (event) => {
-    event.target.style.color = 'lightgray'
-})    
+})
 
-// mouse enter
+// mouse enter + mouseleave
 const footerText = document.querySelector('.footer p');
 footerText.addEventListener('mouseenter', function () {
     footerText.style.color = 'crimson'
+})
+footerText.addEventListener('mouseleave', function () {
+    footerText.style.fontWeight = 'bold'
 })
 
 // key up
@@ -45,3 +45,33 @@ heading4.forEach(h4 => {
         event.target.style.fontWeight = 'bold'
     })
 })
+
+// resize
+const bus = document.querySelector(".bus");
+window.addEventListener('resize', () => {
+    bus.src ='img/bus.jpg';
+})
+
+// scroll
+let last_scroll = 0;
+let ticking = false;
+
+function doSomething(scroll_pos) {
+
+}
+window.addEventListener('scroll', function(e) {
+    last_scroll = window.scrollY;
+
+    if(!ticking) {
+        window.requestAnimationFrame(function() {
+            doSomething(last_scroll);
+            ticking = false;
+        });
+        ticking = true;
+    }
+})
+
+// contextmenu
+window.oncontextmenu = (e) => {
+    e.preventDefault();
+}
